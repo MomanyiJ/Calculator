@@ -29,17 +29,18 @@ def division(n1,n2):
         return None
     return n1/n2
 
-# List out options for the calculator
-print("Select Operand")
-print("1.Addition\n"
-        "2.Subtraction\n"
-        "3.Multiplication\n"
-        "4.Division\n"
-        "5.Press Q to quit\n")
 while True:
+    # List out options for the calculator
+    print("Select Operand")
+    print("1.Addition\n"
+            "2.Subtraction\n"
+            "3.Multiplication\n"
+            "4.Division\n"
+            "5.Press Q to quit\n")
+    
     selection = input("Select operand: ")
 
-    if selection not in ['1', '2', '3', '4']:
+    if selection.upper() == 'Q':
         print("Bye Bye!")
         break
 
