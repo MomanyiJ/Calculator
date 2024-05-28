@@ -4,6 +4,8 @@
 
 #define all operators/functions
 
+# addition
+
 def addition(n1, n2):
     """Adds two numbers and retuns the result"""
     return n1 + n2
@@ -38,32 +40,37 @@ while True:
             "4.Division\n"
             "5.Press Q to quit\n")
     
-    selection = input("Select operand: ")
+    selection = input("Select operation: ")
 
     if selection.upper() == 'Q':
         print("Bye Bye!")
         break
-
-    if selection not in ['1', '2', '3', '4']:
-        print("Invalid selection")
-        continue
-    #get input from user
-    n1 = float(input("Enter the first number: "))
-    n2 = float(input("Enter the second number: "))
+    elif selection in ('1', '2', '3', '4'): # Checks for valid selections ie 1-4
+        try:
+            # Valid selection 1,2,3,4 - proceed to number input
+            n1 = float(input("Please enter your 1st number: "))
+            n2 = float(input("Please enter your 2nd number: "))
 
 
-    # Make operation as user chooses
+            # Make operation as user chooses
 
-    if selection == '1':
-        print(n1, "+",n2,"=",addition(n1,n2))
+            if selection == '1':
+                result = addition(n1, n2)
+                print(f"Result: {n1} + {n2} = {result}")
 
-    elif selection == '2':
-        print(n1, "-",n2, "=",subtraction(n1,n2))
+            elif selection == '2':
+                result = subtraction(n1, n2)
+                print(f"Result: {n1} - {n2} = {result}")
 
-    elif selection == '3':
-        print(n1,"*","=",multiplication(n1,n2))
-    elif selection == '4':
-        result = division(n1, n2)
-        if result is not None:
-            print(n1, "/",n2,"=",division(n1,n2))
-
+            elif selection == '3':
+                result = multiplication(n1, n2)
+                print(f"Result: {n1} * {n2} = {result}")
+            elif selection == '4':
+                result = division(n1, n2)
+                if result is not None:
+                    print(f"Result: {n1} / {n2} = {result}")
+            break
+        except ValueError:
+            print("Error: INvalid input, enter only numbers.")
+    else:
+        print("Invald selection. Please enter between 1-4 or 'Q' to quit.")
