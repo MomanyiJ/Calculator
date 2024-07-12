@@ -11,7 +11,7 @@ def subtract(num1, num2):
     '''Subtracts two numbers and returns returns result'''
     return num1 - num2
 
-def multiply(num1, num2):
+def multiply(num1, num3):
     '''Multiplies two numbers and returns result'''
     return num1 * num2
 
@@ -66,15 +66,26 @@ def main():
                     else:
                         print("Error: Cannot divide by zero.")
             except ValueError:
-                print("Error: INvalid input, Please enter numbers only.")
+                print("Error: Invalid output pplease enter numbers only")
+        elif selection.upper() == 'H': # shows calculation history
+            if not solutions_history:
+                print("No calculations have been done")
+            else:
+                print("\nSolutions Histiory")
+                for entry in solutions_history:
+                    print(entry)
         else:
-            print("Invalid selection. Please eneter a number (1-4) or 'Q' to quit.")
+            print("Invalid selection. Enter a number between 1-4. Or Q to quit.Or H for History")
 
-                # Print calculation history after each operation
+        #Print the first 5 calculations if they exist
+
         if solutions_history:
-            print("\n Solutins History")
-            for entry in solutions_history:
-                print(entry)
+            for i, entry in enumarate(solutions_history):
+                if i < 5: # print the first five entries
+                    print(entry)
 
 if __name__ == "__main__":
     main()
+
+
+
