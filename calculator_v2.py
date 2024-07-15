@@ -33,7 +33,9 @@ def main():
                 "2. Subtraction \n"
                 "3.  Multiplication \n"
                 "4. Division \n"
-                "Q. Quit")
+                "Q. Quit \n"
+                "H. Show History")
+                
         selection = input("Please Enter your operand ")
 
         if selection.upper() == "Q":
@@ -80,7 +82,7 @@ def main():
         #Print the first 5 calculations if they exist
 
         if solutions_history:
-            for i, entry in enumarate(solutions_history):
+            for i, entry in enumerate(solutions_history):
                 if i < 5: # print the first five entries
                     print(entry)
 
