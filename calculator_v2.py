@@ -22,6 +22,26 @@ def divide(num1, num2):
     except ZeroDivisionError:
         print("Error: Cannot divide by zero.")
         return None
+def read_history_from_file(calc_history):
+    """Reads calculation history and returns a list"""
+    calculation_history = []
+    if os.path.exists(calc_history):
+        try:
+            with open(calculation_history, 'r') as file:
+                for line in file:
+                    calculation_history.append(line.strip()) # gets rid of trailing new line
+        except IOError:
+            print(f"Error reading hidtory from '{calc_history}'.")
+    return calculation_history
+
+def write_history_to_file(calc_history, solutions_history):
+    """ This writes calculations hstory to the file calc_history"""
+    try:
+         with open(calc_history, 'w') as file:
+             for entry in solutions_history:
+                 file.write(f"{entry}\n") #Adds new line fr each entry
+    except IOError:
+        print(f"Error writing history to: '{calc_history}'.")
 
 def main():
     """Main program loop hanfling user input, exits with 'Q'"""
@@ -88,6 +108,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
