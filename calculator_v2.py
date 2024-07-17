@@ -2,7 +2,7 @@
 
 #Calculator App
 # This is version 2 that also has history using a list
-
+import os
 def add(num1, num2):
     ''' Adds two numbers and returns result'''
     return num1 + num2
@@ -11,7 +11,7 @@ def subtract(num1, num2):
     '''Subtracts two numbers and returns returns result'''
     return num1 - num2
 
-def multiply(num1, num3):
+def multiply(num1, num2):
     '''Multiplies two numbers and returns result'''
     return num1 * num2
 
@@ -102,9 +102,10 @@ def main():
         #Print the first 5 calculations if they exist
 
         if solutions_history:
-            for i, entry in enumerate(solutions_history):
-                if i < 5: # print the first five entries
-                    print(entry)
+            print("\nSolutions History: ")
+            last_five_calculations = solutions_history[-5:] # Will give you last 5 elements
+            for entry in last_five_calculations:
+                print(entry)
 
 if __name__ == "__main__":
     main()
