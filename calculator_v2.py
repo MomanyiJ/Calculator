@@ -27,7 +27,7 @@ def read_history_from_file(calc_history):
     calculation_history = []
     if os.path.exists(calc_history):
         try:
-            with open(calculation_history, 'r') as file:
+            with open(calc_history, 'r') as file:
                 for line in file:
                     calculation_history.append(line.strip()) # gets rid of trailing new line
         except IOError:
@@ -42,6 +42,7 @@ def write_history_to_file(calc_history, solutions_history):
                  file.write(f"{entry}\n") #Adds new line fr each entry
     except IOError:
         print(f"Error writing history to: '{calc_history}'.")
+        print("Failed to save calculation history, check file permissions")
 
 def main():
     """Main program loop hanfling user input, exits with 'Q'"""
@@ -89,23 +90,18 @@ def main():
                         print("Error: Cannot divide by zero.")
             except ValueError:
                 print("Error: Invalid output pplease enter numbers only")
-        elif selection.upper() == 'H': # shows calculation history
-            if not solutions_history:
-                print("No calculations have been done")
-            else:
-                print("\nSolutions Histiory")
+        elif selection.upper() == 'H': 
+            # shows calculation history if it exists
+            if solutions_history:
+                print("\nSolutions History:") #Prints last five calculations
+                # slicing the last five elements up to ndex -1
+                last_five_calculations = solutions_history[-5:] # this will give the last 5 elements
                 for entry in solutions_history:
                     print(entry)
+            else:
+                print("\nThere is no History")
         else:
             print("Invalid selection. Enter a number between 1-4. Or Q to quit.Or H for History")
-
-        #Print the first 5 calculations if they exist
-
-        if solutions_history:
-            print("\nSolutions History: ")
-            last_five_calculations = solutions_history[-5:] # Will give you last 5 elements
-            for entry in last_five_calculations:
-                print(entry)
 
 if __name__ == "__main__":
     main()
